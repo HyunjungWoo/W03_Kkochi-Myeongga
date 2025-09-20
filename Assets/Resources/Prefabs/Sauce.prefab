@@ -97,8 +97,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7288672517520283896}
   m_Layer: 0
-  m_Name: Source
-  m_TagString: Untagged
+  m_Name: Sauce
+  m_TagString: Sauce
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
