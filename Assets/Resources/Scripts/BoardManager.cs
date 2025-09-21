@@ -75,14 +75,22 @@ public class BoardManager : MonoBehaviour
         Debug.Log("모든 재료/양념통에 새 꼬치를 연동했습니다.");
     }
 
-    // (추가) 꼬치 판매 등 꼬치를 치워야 할 때 호출할 함수
-    public void ClearBoard()
+    
+    public void ResetCurrentStick()
     {
         if (currentStick != null)
         {
-            Destroy(currentStick.gameObject);
-            currentStick = null;
-            UpdateAllTargets(null); // 모든 연결을 끊음
+            // 1. 꼬치 내부 상태를 초기화 (재료 삭제 등)
+            currentStick.ResetSkewer();
+
+            // 2. 꼬치를 원래 생성 위치로 이동
+            currentStick.transform.position = stickSpawnPoint.position;
+
+            // 3. 꼬치 오브젝트가 활성화 상태인지 확인 (setActive(true))
+            currentStick.gameObject.SetActive(true);
+
+            Debug.Log("꼬치를 초기화하고 재배치했습니다. 재사용 가능!");
         }
     }
+
 }
