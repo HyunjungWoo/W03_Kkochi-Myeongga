@@ -5,6 +5,7 @@ public class PlayerHand : MonoBehaviour
     private Camera mainCamera;
     private Skewer grabbableSkewer; // 잡을 수 있는 범위에 들어온 꼬치
     private Skewer heldSkewer;      // 현재 잡고 있는 꼬치
+    private Customer currentCustomer; // 손이 현재 접촉하고 있는 고
 
     void Start()
     {
@@ -33,6 +34,11 @@ public class PlayerHand : MonoBehaviour
             // 만약 잡고 있는 꼬치가 있다면
             if (heldSkewer != null)
             {
+                if (currentCustomer != null)
+                {
+                    currentCustomer.TrySellSkewer();
+
+                }
                 heldSkewer.Release(); // 꼬치에게 놓였다고 알려줌
                 heldSkewer = null;    // 손은 이제 아무것도 안 잡고 있음
             }
@@ -48,15 +54,22 @@ public class PlayerHand : MonoBehaviour
             // 잡을 수 있는 대상으로 지정
             grabbableSkewer = other.GetComponent<Skewer>();
         }
+        else if(other.CompareTag("Customer"))
+        {
+            currentCustomer = other.GetComponent<Customer>();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         // 나간 것이 "Stick" 태그를 가졌다면
-        if (other.CompareTag("Stick"))
+        if (other.CompareTag("Stick") && grabbableSkewer == other.GetComponent<Skewer>()) 
+        { 
+            grabbableSkewer = null; 
+        }
+        else if(other.CompareTag("Customer") && currentCustomer == other.GetComponent<Customer>())
         {
-            // 잡을 수 있는 대상에서 해제
-            grabbableSkewer = null;
+            currentCustomer = null;
         }
     }
 

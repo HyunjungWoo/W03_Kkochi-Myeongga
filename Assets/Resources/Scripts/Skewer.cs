@@ -39,14 +39,6 @@ public class Skewer : MonoBehaviour
         transform.position = originalPosition; // 원래 위치로 돌아감
     }
 
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        // 잡혀있는 상태이고, 상대가 Customer라면 즉시 판매
-        if (other.CompareTag("Customer"))
-        {
-        }
-    }
     
     #region 꼬치관련 함수들
 
@@ -142,8 +134,6 @@ public class Skewer : MonoBehaviour
         nextSlotIndex = 0;
         isSeasoned = false; // (isSeasoned 변수가 있다면)
         price = 0f; // (price 변수가 있다면)
-        //holder = null;
-        //hand = null;
     }
 
     #endregion
