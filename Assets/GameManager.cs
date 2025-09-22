@@ -1,14 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using TMPro;
 using UnityEngine;
-using static SeasoningBottle;
+
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance; // 다른 스크립트에서 쉽게 접근하기 위한 싱글톤
 
-    public int money = 1000; // 플레이어의 초기 돈
+    public int money = 1000;
+    public int affection = 0;
     public Customer currentCustomer;
+
+    private UIManager uiManager;
 
     // 고객의 행동을 담은 프리팹 (모든 고객이 동일)
     public GameObject customerPrefab;
@@ -31,23 +36,56 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        // UIManager 인스턴스 찾기
+        uiManager = FindFirstObjectByType<UIManager>();
+        if (uiManager == null)
+        {
+            UnityEngine.Debug.LogError("UIManager를 찾을 수 없습니다. UIManager 스크립트가 포함된 오브젝트를 씬에 추가했는지 확인하세요.");
+        }
+
     }
+
     void Start()
     {
+        if (uiManager != null)
+        {
+            uiManager.UpdateMoneyUI(money);
+            uiManager.UpdateAffectionUI(affection);
+        }
+
         ResetCurrentCustomer();
+    }
+    public void AddMoney(int amount)
+    {
+        money += amount;
+        if (uiManager != null)
+        {
+            uiManager.UpdateMoneyUI(money);
+            uiManager.ShowFloatingMoney(amount);
+        }
+    }
+    public void AddAffection(int amount)
+    {
+        affection += amount;
+        if (uiManager != null)
+        {
+            uiManager.UpdateAffectionUI(affection);
+            uiManager.ShowFloatingAffection(amount);
+        }
     }
 
     public void ResetCurrentCustomer()
     {
         if (currentCustomer == null)
         {
-            Debug.LogError("Current Customer가 할당되지 않았습니다. 인스펙터에서 연결해주세요.");
+            UnityEngine.Debug.LogError("Current Customer가 할당되지 않았습니다. 인스펙터에서 연결해주세요.");
             return;
         }
 
         if (customerProfiles == null || customerProfiles.Count == 0)
         {
-            Debug.LogError("고객 프로필 리스트가 비어있습니다. CustomerData를 추가해주세요.");
+            UnityEngine.Debug.LogError("고객 프로필 리스트가 비어있습니다. CustomerData를 추가해주세요.");
             return;
         }
 
@@ -68,21 +106,15 @@ public class GameManager : MonoBehaviour
         currentCustomer.SetupCustomer();
     }
 
-    /// <summary>
-    /// 고객이 주문을 완료했을 때 호출되는 함수
-    /// </summary>
+    
     public void CompleteOrder()
     {
         currentCustomer.GetComponent<Collider2D>().enabled = false;
-
         // 고객이 사라지는 효과를 위한 코루틴 시작
         StartCoroutine(MoveCustomerOffscreen());
     }
 
 
-    /// <summary>
-    /// 손님 생성에 지연을 주는 코루틴
-    /// </summary>
     private IEnumerator MoveCustomerOffscreen()
     {
         float timer = 0f;

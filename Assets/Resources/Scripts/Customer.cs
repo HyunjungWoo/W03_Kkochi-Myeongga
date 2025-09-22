@@ -47,6 +47,7 @@ public class Customer : MonoBehaviour
             finalPrice = skewer.price;
             // 주문이 맞을 때, 무작위 감사 인사 출력
             DialogueManager.Instance.Speak(customerData.GetRandomThankYou());
+            GameManager.Instance.AddAffection(5); // 호감도 감소
             skewer.ResetSkewer();
         }
         else
@@ -54,6 +55,7 @@ public class Customer : MonoBehaviour
             finalPrice = skewer.price * 0.3f;
             // 주문이 틀릴 때, 무작위 불평 출력
             DialogueManager.Instance.Speak(customerData.GetRandomComplaint());
+            GameManager.Instance.AddAffection(-3); // 호감도 감소
             skewer.ResetSkewer();
         }
 

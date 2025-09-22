@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customerType: 0
   portraitList:
-  - {fileID: 1567529521155595667, guid: 7c206d1a2f70b314d9abbf683f6eca66, type: 3}
-  - {fileID: 7156064963727093473, guid: 62008c56d576ec9468e8705fbbadf55c, type: 3}
+  - {fileID: 579324003094405277, guid: f7fda122701ae1c4481a564bba55068f, type: 3}
   favoriteOrder: {fileID: 11400000, guid: 0e1061b1c9c47be449acb61fb5a96a02, type: 2}
-  patience: 0
+  patience: 10
   thankYou:
   - "\uD06C\uC73C\uC73C! \uCE58\uC988\uC758 \uBC14\uB2E4\uC5D0 \uBE60\uC838 \uC8FD\uC5B4\uB3C4
     \uC88B\uC544! \uACE0\uB9D9\uB2E4! \uB2F9\uC2E0 \uB355\uBD84\uC5D0 \uB0B4\uC77C
