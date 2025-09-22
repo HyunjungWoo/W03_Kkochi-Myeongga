@@ -22,8 +22,10 @@ public class GameManager : MonoBehaviour
     // 무작위로 소환될 고객들의 데이터를 담은 리스트
     public List<CustomerData> customerProfiles;
 
+    public int bonusPer10Affection = 5;
     public float spawnDelay = 5f; // 꼬치 완성 후 다음 손님이 오는 시간 (초 단위)
     private float exitSpeed = 7f; // 고객이 나가는 속도
+    public float fastSpawnDelay = 3f; // 빨라진 손님 등장 속도 (원하는 값으로 설정)
 
     void Awake()
     {
@@ -58,21 +60,31 @@ public class GameManager : MonoBehaviour
     }
     public void AddMoney(int amount)
     {
-        money += amount;
+        int bonus = GetBonusAmount(amount);
+        money +=(amount + bonus);
+
         if (uiManager != null)
         {
             uiManager.UpdateMoneyUI(money);
-            uiManager.ShowFloatingMoney(amount);
+            uiManager.ShowFloatingMoney(amount+bonus);
         }
     }
     public void AddAffection(int amount)
     {
+        if (affection > 20)
+        {
+            // 호감도가 20 이상이면 1씩 증가
+            amount = Mathf.Min(amount, 1);
+        }
+        else if (affection >= 20 && affection < 30) spawnDelay = fastSpawnDelay; // 호감도가 20 이상 30 미만이면 손님 등장 속도 빨라짐
+
         affection += amount;
         if (uiManager != null)
         {
             uiManager.UpdateAffectionUI(affection);
             uiManager.ShowFloatingAffection(amount);
         }
+        CheckGameOver();
     }
 
     public void ResetCurrentCustomer()
@@ -110,6 +122,7 @@ public class GameManager : MonoBehaviour
     public void CompleteOrder()
     {
         currentCustomer.GetComponent<Collider2D>().enabled = false;
+
         // 고객이 사라지는 효과를 위한 코루틴 시작
         StartCoroutine(MoveCustomerOffscreen());
     }
@@ -133,6 +146,31 @@ public class GameManager : MonoBehaviour
         // 이동이 끝난 후 고객 오브젝트 비활성화 및 리셋
         currentCustomer.gameObject.SetActive(false);
         ResetCurrentCustomer();
+    }
+
+    private int GetBonusAmount(int basePrice)
+    {
+        // 호감도가 10 이상일 때만 계산
+        if (affection >= 10)
+        {
+            // 호감도 10마다 보너스 지급 (예: 호감도 25 -> 20점 구간에 해당)
+            int bonusLevels = affection / 10;
+            int bonus = bonusLevels * bonusPer10Affection;
+            return bonus;
+        }
+        return 0; // 호감도 10 미만일 경우 보너스 없음
+    }
+
+    private void CheckGameOver()
+    {
+        // 호감도가 -10 이하거나 돈이 0 이하일 때 게임오버
+        if (affection <= -10 || money <= 0)
+        {
+            // 게임오버 처리 (예: 메시지 출력, 씬 전환 등)
+            UnityEngine.Debug.Log("게임 오버! 호감도 또는 자금이 부족합니다.");
+            // 씬을 GameOver 씬으로 전환
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
+        }
     }
 
 }
