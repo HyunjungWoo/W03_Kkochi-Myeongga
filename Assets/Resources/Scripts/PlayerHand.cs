@@ -6,7 +6,6 @@ public class PlayerHand : MonoBehaviour
     private Skewer grabbableSkewer; // 잡을 수 있는 범위에 들어온 꼬치
     private Skewer heldSkewer;      // 현재 잡고 있는 꼬치
     private Customer currentCustomer; // 손이 현재 접촉하고 있는 고
-    private bool isReset = false;
     void Start()
     {
         mainCamera = Camera.main;
@@ -38,7 +37,7 @@ public class PlayerHand : MonoBehaviour
                 {
                     if (GameManager.Instance.isLeaving) return; // 손님이 나가는 중이면 아무것도 안 함
                     float money = currentCustomer.CalculatePayment(heldSkewer);
-                    Debug.Log($"손님에게서 {money}원을 받았습니다. 현재 잔액: {GameManager.Instance.money}원");
+                    Debug.Log($"손님에게서 {money}원을 받았습니다. 현재 잔액: {GameManager.Instance.totalMoney}원");
                     GameManager.Instance.AddMoney((int)money);
                     GameManager.Instance.CompleteOrder();
 

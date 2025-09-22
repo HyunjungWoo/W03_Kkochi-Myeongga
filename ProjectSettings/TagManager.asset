@@ -7,6 +7,7 @@ TagManager:
   - Sauce
   - Stick
   - Customer
+  - StickBox
   layers:
   - Default
   - TransparentFX

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance; // 다른 스크립트에서 쉽게 접근하기 위한 싱글톤
 
-    public int money = 1000;
+    public int totalMoney = 1000;
     public int affection = 0;
     public Customer currentCustomer;
 
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     {
         if (uiManager != null)
         {
-            uiManager.UpdateMoneyUI(money);
+            uiManager.UpdateMoneyUI(totalMoney);
             uiManager.UpdateAffectionUI(affection);
         }
 
@@ -63,11 +63,11 @@ public class GameManager : MonoBehaviour
     public void AddMoney(int amount)
     {
         int bonus = GetBonusAmount(amount);
-        money +=(amount + bonus);
+        totalMoney +=(amount + bonus);
 
         if (uiManager != null && !isLeaving)
         {
-            uiManager.UpdateMoneyUI(money);
+            uiManager.UpdateMoneyUI(totalMoney);
             if (amount == 0) return;
             uiManager.ShowFloatingMoney(amount+bonus);
         }
@@ -86,7 +86,6 @@ public class GameManager : MonoBehaviour
         {
             uiManager.UpdateAffectionUI(affection);
         }
-        CheckGameOver();
     }
 
     public void ResetCurrentCustomer()
@@ -131,6 +130,7 @@ public class GameManager : MonoBehaviour
         currentCustomer.HideLeaveButton();
         // 고객이 사라지는 효과를 위한 코루틴 시작
         StartCoroutine(MoveCustomerOffscreen());
+        CheckGameOver();
     }
 
 
@@ -175,7 +175,7 @@ public class GameManager : MonoBehaviour
     private void CheckGameOver()
     {
         // 호감도가 -10 이하거나 돈이 0 이하일 때 게임오버
-        if (affection <= -20 || money <= 0)
+        if (affection <= -20 || totalMoney <= 0)
         {
             // 게임오버 처리 (예: 메시지 출력, 씬 전환 등)
             UnityEngine.Debug.Log("게임 오버! 호감도 또는 자금이 부족합니다.");
@@ -197,9 +197,29 @@ public class GameManager : MonoBehaviour
     {
         if (currentCustomer != null)
         {
-            currentCustomer.HideLeaveButton(); // 버튼 숨기기
-            AddAffection(affectionLossOnLeave); // 호감도 감소
-            CompleteOrder(); // 고객 퇴장 처리
+            if (currentCustomer.customerData.customerType == CustomerType.Student)
+            {
+                currentCustomer.SetPortrait(currentCustomer.customerData.portraitList[1]);
+                DialogueManager.Instance.Speak("감히 우리아이한테 꼬치를 안팔아? 맘카페에 다 알리겠어!!");
+                AddAffection(affectionLossOnLeave * 2); // 호감도 감소
+                //1초 뒤 퇴장
+                currentCustomer.HideLeaveButton(); // 버튼 숨기기
+                Invoke(nameof(CompleteOrder), 2f);
+            }
+            else if (currentCustomer.customerData.customerType == CustomerType.Beggar)
+            {
+                currentCustomer.SetPortrait(currentCustomer.customerData.portraitList[1]);
+                DialogueManager.Instance.Speak(currentCustomer.customerData.GetRandomComplaint());
+                currentCustomer.HideLeaveButton(); // 버튼 숨기기
+                Invoke(nameof(CompleteOrder), 2f);
+
+            }
+            else
+            {
+                currentCustomer.HideLeaveButton(); // 버튼 숨기기
+                AddAffection(affectionLossOnLeave); // 호감도 감소
+                CompleteOrder(); // 고객 퇴장 처리
+            }
         }
     }
 }

@@ -66,6 +66,21 @@ public class Customer : MonoBehaviour
         bool isCorrect = skewer.MatchesRecipe(customerData.favoriteOrder);
         float finalPrice = 0;
 
+        if(customerData.customerType == CustomerType.Student) 
+        {
+            DialogueManager.Instance.Speak("개이득~ 야미");
+            GameManager.Instance.AddAffection(5); // 호감도 감소
+            skewer.ResetSkewer();
+            return -50;
+        }
+        else if(customerData.customerType == CustomerType.Beggar) // 거지
+        {
+            DialogueManager.Instance.Speak(customerData.GetRandomThankYou());
+            GameManager.Instance.AddAffection(5); // 호감도 감소
+            skewer.ResetSkewer();
+            return 0;
+        }
+
         if (isCorrect)
         {
             finalPrice = skewer.price;
@@ -85,6 +100,16 @@ public class Customer : MonoBehaviour
 
         return finalPrice;
     }
+
+    // 스프라이트를 외부에서 변경할 수 있도록 public 함수 추가
+    public void SetPortrait(Sprite newPortrait)
+    {
+        if (portraitSR != null)
+        {
+            portraitSR.sprite = newPortrait;
+        }
+    }
+
 
 
     #region 고객 충돌감지

@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ad14ea3a78c3b4896650185c6c037f, type: 3}
+  m_Name: CustomerData
+  m_EditorClassIdentifier: 
+  customerType: 0
+  portraitList:
+  - {fileID: 1567529521155595667, guid: 7c206d1a2f70b314d9abbf683f6eca66, type: 3}
+  - {fileID: 7156064963727093473, guid: 62008c56d576ec9468e8705fbbadf55c, type: 3}
+  favoriteOrder: {fileID: 11400000, guid: 0e3a46b9fc732f24a941e0860bd94d19, type: 2}
+  patience: 10
+  thankYou:
+  - "\uC5ED\uC2DC! \uC774 \uB9DB\uC774\uC9C0! \uACE0\uAE30 \uC721\uC999\uC774 \uC0B4\uC544\uC788\uB124,
+    \uC815\uB9D0 \uB9DB\uC788\uAC8C \uBA39\uACA0\uC2B5\uB2C8\uB2E4!"
+  - "\uCD5C\uACE0\uC758 \uAF2C\uCE58\uC785\uB2C8\uB2E4! \uACE0\uAE30 \uC591\uB3C4
+    \uD478\uC9D0\uD558\uACE0, \uC644\uBCBD\uD574\uC694. \uC798 \uBA39\uC5C8\uC2B5\uB2C8\uB2E4!"
+  - "\"\uC640, \uC9C4\uC9DC \uACE0\uAE30 \uD558\uB098\uB294 \uB05D\uB0B4\uC8FC\uB124!
+    \uC0AC\uC7A5\uB2D8, \uC190\uB9DB\uC774 \uC7A5\uB09C \uC544\uB2C8\uC5D0\uC694!"
+  complaint:
+  - "\uC774\uAC8C \uBB50\uC57C? \uACE0\uAE30\uBCF4\uB2E4 \uC57C\uCC44\uAC00 \uB354
+    \uB9CE\uC796\uC544! \uAF2C\uCE58\uC5D0 \uCC44\uC18C \uB0C4\uC0C8\uB9CC \uAC00\uB4DD\uD558\uB124,
+    \uB2E4\uC2DC \uB9CC\uB4E4\uC5B4 \uC918!"
+  - "\uB0B4\uAC00 \uACE0\uAE30 \uAF2C\uCE58\uB97C \uB2EC\uB7AC\uC9C0, \uCC44\uC18C
+    \uAF2C\uCE58\uB97C \uB2EC\uB7AC\uB098? \uC774\uAC70 \uACE0\uAE30 \uB9DB\uB3C4
+    \uC548 \uB098!"
+  - "\uC5D0\uC774, \uACE0\uAE30 \uAF2C\uCE58\uB77C\uBA74\uC11C \uC65C \uC774\uB807\uAC8C
+    \uBD80\uC2E4\uD574? \uD55C \uC785 \uBA39\uACE0 \uB098\uB2C8 \uACE0\uAE30\uAC00
+    \uC5C6\uB124"
+  orderPrompt:
+  - "\uC0AC\uC7A5\uB2D8, \uB2ED\uACE0\uAE30 \uAF2C\uCE58 \uC788\uC5B4\uC694? \uC57C\uCC44\uB294
+    \uBE7C\uACE0, \uACE0\uAE30\uB9CC \uC794\uB729 \uB123\uC5B4\uC8FC\uC138\uC694!"
+  - "\uACE0\uAE30 \uAF2C\uCE58\uC5D0 \uC591\uB150\uC740 \uD544\uC694 \uC5C6\uC8E0.
+    \uADF8\uB0E5 \uC18C\uAE08\uB9CC \uC0B4\uC9DD \uBFCC\uB824\uC11C \uACE0\uAE30
+    \uBCF8\uC5F0\uC758 \uB9DB\uC744 \uB290\uB07C\uACE0 \uC2F6\uB124\uC694.\""
+  - "\uCC44\uC18C\uB294 \uC9C8\uC0C9\uC774\uC57C. \uAF2C\uCE58\uB294 \uACE0\uAE30\uC9C0!"

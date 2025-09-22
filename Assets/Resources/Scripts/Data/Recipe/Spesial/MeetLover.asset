@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5f9e52ddddedf1479ab7ca1ef36d290, type: 3}
-  m_Name: Mushroom_lover
+  m_Name: MeetLover
   m_EditorClassIdentifier: 
   recipe:
     recipeName: 
     ingredientRecipes:
-    - ingredient: 3
+    - ingredient: 2
       seasoningType: 0
-    - ingredient: 3
+    - ingredient: 2
+      seasoningType: 0
+    - ingredient: 2
       seasoningType: 0
     isSpecial: 0

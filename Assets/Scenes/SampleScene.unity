@@ -155,7 +155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 663, y: 48}
+  m_AnchoredPosition: {x: 663, y: -20}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &19333749
@@ -690,7 +690,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524611714}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -940,22 +940,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea6b734c545cb4419c098d157199247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 1000
-  affection: 0
+  totalMoney: 1000
+  affection: 5
   currentCustomer: {fileID: 1738380026}
-  affectionLossOnLeave: -10
+  affectionLossOnLeave: -5
   isLeaving: 0
   customerPrefab: {fileID: 1738380025}
   customerSpawnPoint: {fileID: 7393389603481697635, guid: c60810aa0190e3041a373cb8fc30a750, type: 3}
   customerProfiles:
+  - {fileID: 11400000, guid: 5a9b4da8e58b8334594a0c32241b0078, type: 2}
   - {fileID: 11400000, guid: 49d5a355c8b51aa44bb947cc6da10f00, type: 2}
+  - {fileID: 11400000, guid: 4d86e7970ca0450499cd9219ddbe7360, type: 2}
+  - {fileID: 11400000, guid: 99041fc4f848a5447a7882ad4292b661, type: 2}
   - {fileID: 11400000, guid: 831be1312743d6a4aab9a66cb160c4ca, type: 2}
   - {fileID: 11400000, guid: da9a925d8dfa0c0488b3e3c48768fd92, type: 2}
   - {fileID: 11400000, guid: 78af46785cadad34ba853ba30307af4e, type: 2}
-  - {fileID: 11400000, guid: 1a1ed66e80ecc5448884dc320ddbac80, type: 2}
-  - {fileID: 11400000, guid: 99041fc4f848a5447a7882ad4292b661, type: 2}
+  - {fileID: 11400000, guid: 76dd8a0c5c58a8b43838a7d07c702611, type: 2}
   - {fileID: 11400000, guid: c64bff3824b93514c9d4a839fcefa592, type: 2}
-  - {fileID: 11400000, guid: 4d86e7970ca0450499cd9219ddbe7360, type: 2}
+  - {fileID: 11400000, guid: 9ddf3a2b74437f04a80e972384156156, type: 2}
+  - {fileID: 11400000, guid: ba034aff205cb814fa98a404d5c7f4a9, type: 2}
   bonusPer10Affection: 5
   spawnDelay: 5
   fastSpawnDelay: 3
@@ -2277,6 +2280,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 19333749}
     - target: {fileID: 2695279988988836230, guid: c60810aa0190e3041a373cb8fc30a750, type: 3}
+      propertyPath: customerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 9ddf3a2b74437f04a80e972384156156, type: 2}
+    - target: {fileID: 2695279988988836230, guid: c60810aa0190e3041a373cb8fc30a750, type: 3}
       propertyPath: dialogueTextUI
       value: 
       objectReference: {fileID: 1648795119}
@@ -2496,6 +2503,7 @@ MonoBehaviour:
   - {fileID: 1835035215}
   - {fileID: 1259269951}
   - {fileID: 1706056977}
+  - {fileID: 7207516929140149745}
   seasoningBottles:
   - {fileID: 1964137921}
   - {fileID: 1843002310}
@@ -3748,6 +3756,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 992c518826465374ba3a01bd6b195bcc, type: 3}
+--- !u!114 &7207516929140149745 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7972269251461573097, guid: 992c518826465374ba3a01bd6b195bcc, type: 3}
+  m_PrefabInstance: {fileID: 7093904499263723236}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8b2ab30dce37a8418f65f13abe3c484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7541250956997126967
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3824,6 +3843,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StickBox
       objectReference: {fileID: 0}
+    - target: {fileID: 145827306997152024, guid: 49cc681b584afef4983a25dedff3bbcb, type: 3}
+      propertyPath: m_TagString
+      value: StickBox
+      objectReference: {fileID: 0}
     - target: {fileID: 833174159801060630, guid: 49cc681b584afef4983a25dedff3bbcb, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -3831,6 +3854,18 @@ PrefabInstance:
     - target: {fileID: 3739738128832688227, guid: 49cc681b584afef4983a25dedff3bbcb, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3967101293098128479, guid: 49cc681b584afef4983a25dedff3bbcb, type: 3}
+      propertyPath: m_Radius
+      value: 0.29023635
+      objectReference: {fileID: 0}
+    - target: {fileID: 3967101293098128479, guid: 49cc681b584afef4983a25dedff3bbcb, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.50502145
+      objectReference: {fileID: 0}
+    - target: {fileID: 3967101293098128479, guid: 49cc681b584afef4983a25dedff3bbcb, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4579508299897441330, guid: 49cc681b584afef4983a25dedff3bbcb, type: 3}
       propertyPath: m_Enabled

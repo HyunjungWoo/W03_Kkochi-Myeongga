@@ -75,7 +75,7 @@ public class IngredientBox : MonoBehaviour
     private void OnRefillButtonClicked()
     {
         // GameManager 인스턴스를 통해 돈이 충분한지 확인
-        if (GameManager.Instance != null && GameManager.Instance.money >= refillCost)
+        if (GameManager.Instance != null && GameManager.Instance.totalMoney >= refillCost)
         {
             GameManager.Instance.AddMoney(-refillCost); // 재고 비용 지불
             RefillStock(); // 재고 채우기

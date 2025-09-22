@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ad14ea3a78c3b4896650185c6c037f, type: 3}
+  m_Name: JJ
+  m_EditorClassIdentifier: 
+  customerType: 2
+  portraitList:
+  - {fileID: -1061299427169761781, guid: c65018e012718104387e0b128249e6eb, type: 3}
+  - {fileID: -4080351719526596465, guid: 946622dab11e04849ac214c690000a47, type: 3}
+  favoriteOrder: {fileID: 11400000, guid: 6e409860d8a18104da067809fa9eb0d5, type: 2}
+  patience: 0
+  thankYou:
+  - "\uD06C\uC73C... \uACE0\uB9D9\uC218\uB2E4. \uB355\uBD84\uC5D0 \uC624\uB298 \uD55C
+    \uB07C \uC81C\uB300\uB85C \uBA39\uACE0 \uAC11\uB2C8\uB2E4."
+  - "\uC798 \uBA39\uC744\uAC8C. \uC774\uB807\uAC8C \uC778\uC2EC \uC88B\uC740 \uC0AC\uB78C\uC774
+    \uC544\uC9C1 \uC788\uAE34 \uD558\uAD6C\uB9CC!"
+  complaint:
+  - "\uB0B4\uAC00 \uAC70\uC9C0\uB77C\uC11C \uBB34\uC2DC\uD558\uB294 \uAC70\uC57C?!
+    \uB2E4 \uAE30\uC5B5\uD574 \uB458 \uAC70\uC57C!"
+  - "\uC544\uB2C8, \uC774 \uC591\uBC18\uC774! \uAF2C\uCE58 \uD558\uB098 \uACF5\uC9DC\uB85C
+    \uC904 \uC218\uB3C4 \uC788\uB294 \uAC70 \uC544\uB0D0?! \uC778\uC2EC \uD55C\uBC88
+    \uC57C\uBC15\uD558\uB124!"
+  - "\uC7A5\uC0AC \uADF8\uB807\uAC8C \uD558\uB294 \uAC70 \uC544\uB2C8\uC57C! \uB3C8
+    \uC548 \uBC1B\uACE0 \uAF2C\uCE58 \uD558\uB098 \uC8FC\uB294 \uAC8C \uADF8\uB807\uAC8C
+    \uC544\uAE4C\uC6CC?!\""
+  orderPrompt:
+  - "\uC0AC\uC7A5\uB2D8\u2026 \uBC30\uAC00 \uACE0\uD30C\uC11C \uADF8\uB7F0\uB370...
+    \uAF2C\uCE58 \uD558\uB098\uB9CC \uC8FC\uC2E4 \uC218 \uC5C6\uC744\uAE4C\uC694?
+    \uB2ED\uACE0\uAE30\uBA74 \uC815\uB9D0 \uAC10\uC0AC\uD560 \uD150\uB370\uC694..."
+  - "\uAF2C\uCE58 \uD55C \uAC1C\uB9CC... \uBA39\uACE0 \uAC08 \uC218 \uC788\uAC8C...
+    \uB2ED\uACE0\uAE30 \uC788\uC73C\uBA74 \uD55C \uAC1C\uB9CC \uB358\uC838\uC8FC\uACE0
+    \uAC00\uC694..."
+  - "\uBC25...\uBB3C...\uACE0\uAE30..."
