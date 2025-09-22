@@ -6,7 +6,7 @@ public class PlayerHand : MonoBehaviour
     private Skewer grabbableSkewer; // 잡을 수 있는 범위에 들어온 꼬치
     private Skewer heldSkewer;      // 현재 잡고 있는 꼬치
     private Customer currentCustomer; // 손이 현재 접촉하고 있는 고
-
+    private bool isReset = false;
     void Start()
     {
         mainCamera = Camera.main;
@@ -43,7 +43,7 @@ public class PlayerHand : MonoBehaviour
                     GameManager.Instance.CompleteOrder();
 
                 }
-
+                
                 heldSkewer.Release(); // 꼬치에게 놓였다고 알려줌
                 heldSkewer = null;    // 손은 이제 아무것도 안 잡고 있음
 
@@ -64,6 +64,7 @@ public class PlayerHand : MonoBehaviour
         {
             currentCustomer = other.GetComponent<Customer>();
         }
+        
     }
 
     private void OnTriggerExit2D(Collider2D other)
