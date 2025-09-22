@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
         {
             uiManager.UpdateAffectionUI(affection);
         }
+        CheckGameOver();
     }
 
     public void ResetCurrentCustomer()
@@ -130,7 +131,6 @@ public class GameManager : MonoBehaviour
         currentCustomer.HideLeaveButton();
         // 고객이 사라지는 효과를 위한 코루틴 시작
         StartCoroutine(MoveCustomerOffscreen());
-        CheckGameOver();
     }
 
 
@@ -211,6 +211,7 @@ public class GameManager : MonoBehaviour
                 currentCustomer.SetPortrait(currentCustomer.customerData.portraitList[1]);
                 DialogueManager.Instance.Speak(currentCustomer.customerData.GetRandomComplaint());
                 currentCustomer.HideLeaveButton(); // 버튼 숨기기
+                AddAffection(affectionLossOnLeave * 2); // 호감도 감소
                 Invoke(nameof(CompleteOrder), 2f);
 
             }
