@@ -5,7 +5,8 @@ public enum IngredientType
 {
     Scallion,
     Cheese, 
-    Chicken
+    Chicken,
+    mushroom,
 }
 
 public class IngredientData : MonoBehaviour

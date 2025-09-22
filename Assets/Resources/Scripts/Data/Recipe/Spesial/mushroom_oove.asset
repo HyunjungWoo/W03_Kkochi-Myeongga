@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ad14ea3a78c3b4896650185c6c037f, type: 3}
+  m_Name: mushroom_oove
+  m_EditorClassIdentifier: 
+  customerType: 0
+  portraitList:
+  - {fileID: -8463549467654118101, guid: db18f855aecb3d14f81ef885cd5a93c9, type: 3}
+  favoriteOrder: {fileID: 11400000, guid: ee23bfdfad8bf044b90a040a20b04d9e, type: 2}
+  patience: 10
+  thankYou:
+  - "\uC640, \uBC84\uC12F \uD5A5\uC774 \uC815\uB9D0 \uC608\uC220\uC774\uB124\uC694! "
+  - "\uC774 \uC2DD\uAC10! \uC774 \uB9DB! \uC774 \uBC84\uC12F\uC740 \uC815\uB9D0 \uC644\uBCBD\uD558\uB124\uC694.
+    \uC5ED\uC2DC \uC774 \uC9D1\uC740 \uBC84\uC12F \uB9DB\uC9D1\uC774\uB124\uC694!"
+  - "\uC81C\uB300\uB85C \uB41C \uB2ED\uAF2C\uCE58\uB97C \uBA39\uC740 \uAE30\uBD84\uC774\uC5D0\uC694.
+    \uB2E4\uC74C\uC5D4 \uCE5C\uAD6C\uB4E4\uC774\uB791 \uAC19\uC774 \uC62C\uAC8C\uC694."
+  complaint:
+  - "\uBC84\uC12F\uC774 \uC65C \uC774\uB807\uAC8C \uC870\uAE08\uBC16\uC5D0 \uC5C6\uC5B4\uC694?
+    \uC81C\uAC00 \uBC84\uC12F \uC88B\uC544\uD55C\uB2E4\uACE0 \uD588\uC796\uC544\uC694."
+  - "\uBC84\uC12F\uC774 \uC5B4\uB514\uC788\uC5B4\uC6A9? \u3160\u3160 "
+  orderPrompt:
+  - "\uD639\uC2DC... \uBC84\uC12F \uB4E4\uC5B4\uAC04 \uB2ED\uAF2C\uCE58\uB3C4 \uC788\uB098\uC694?
+    \uBC84\uC12F \uB9CE\uC774\uB9CE\uC774 \uB123\uC5B4\uC8FC\uC138\uC694!"
+  - "\uBC84\uC12F\uC774\uB791 \uB2ED\uACE0\uAE30 \uAC19\uC774 \uAF42\uC544\uC8FC\uC2DC\uBA74
+    \uC548 \uB420\uAE4C\uC694? \uAC04\uC7A5 \uC18C\uC2A4\uC694!"
+  - "\uC774 \uC9D1\uC740 \uBC84\uC12F\uC744 \uC4F0\uB124\uC694? \uADF8\uB7FC \uBBFF\uACE0
+    \uBA39\uC744 \uC218 \uC788\uC8E0. \uB2ED\uAF2C\uCE58 \uD558\uB098\uB791 \uBC84\uC12F\uAF2C\uCE58
+    \uD558\uB098 \uC8FC\uC138\uC694."
