@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public int affection = 0;
     public Customer currentCustomer;
 
+    public int affectionLossOnLeave = -5; // 손님이 나갈 때 잃는 호감도
+    public bool isLeaving = false;
     private UIManager uiManager;
 
     // 고객의 행동을 담은 프리팹 (모든 고객이 동일)
@@ -63,9 +65,10 @@ public class GameManager : MonoBehaviour
         int bonus = GetBonusAmount(amount);
         money +=(amount + bonus);
 
-        if (uiManager != null)
+        if (uiManager != null && !isLeaving)
         {
             uiManager.UpdateMoneyUI(money);
+            if (amount == 0) return;
             uiManager.ShowFloatingMoney(amount+bonus);
         }
     }
@@ -82,13 +85,13 @@ public class GameManager : MonoBehaviour
         if (uiManager != null)
         {
             uiManager.UpdateAffectionUI(affection);
-            uiManager.ShowFloatingAffection(amount);
         }
         CheckGameOver();
     }
 
     public void ResetCurrentCustomer()
     {
+        isLeaving = false;
         if (currentCustomer == null)
         {
             UnityEngine.Debug.LogError("Current Customer가 할당되지 않았습니다. 인스펙터에서 연결해주세요.");
@@ -101,6 +104,8 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        // 나가기 버튼 온
+        HandleOutOfStock();
         currentCustomer.transform.position = customerSpawnPoint.position;
 
         // 1. 고객 오브젝트 활성화
@@ -122,7 +127,8 @@ public class GameManager : MonoBehaviour
     public void CompleteOrder()
     {
         currentCustomer.GetComponent<Collider2D>().enabled = false;
-
+        // 주문 완료 시 나가기 버튼 숨기기
+        currentCustomer.HideLeaveButton();
         // 고객이 사라지는 효과를 위한 코루틴 시작
         StartCoroutine(MoveCustomerOffscreen());
     }
@@ -141,6 +147,11 @@ public class GameManager : MonoBehaviour
             }
             timer += Time.deltaTime;
             yield return null; // 다음 프레임까지 대기
+        }
+
+        if (currentCustomer != null)
+        {
+            currentCustomer.HideLeaveButton();
         }
 
         // 이동이 끝난 후 고객 오브젝트 비활성화 및 리셋
@@ -164,7 +175,7 @@ public class GameManager : MonoBehaviour
     private void CheckGameOver()
     {
         // 호감도가 -10 이하거나 돈이 0 이하일 때 게임오버
-        if (affection <= -10 || money <= 0)
+        if (affection <= -20 || money <= 0)
         {
             // 게임오버 처리 (예: 메시지 출력, 씬 전환 등)
             UnityEngine.Debug.Log("게임 오버! 호감도 또는 자금이 부족합니다.");
@@ -173,4 +184,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void HandleOutOfStock()
+    {
+        // 현재 손님이 있다면 나가기 버튼을 보여줌
+        if (currentCustomer != null)
+        {
+            currentCustomer.ShowLeaveButton();
+        }
+    }
+
+    public void ForceCustomerLeave()
+    {
+        if (currentCustomer != null)
+        {
+            currentCustomer.HideLeaveButton(); // 버튼 숨기기
+            AddAffection(affectionLossOnLeave); // 호감도 감소
+            CompleteOrder(); // 고객 퇴장 처리
+        }
+    }
 }

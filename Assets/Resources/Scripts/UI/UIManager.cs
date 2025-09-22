@@ -48,7 +48,12 @@ public class UIManager : MonoBehaviour
 
     // 상승 금액 애니메이션 표시
     public void ShowFloatingMoney(int amount)
-    {
+    {// 금액이 양수일 경우 노란색, 음수일 경우 빨간색
+        if(amount < 0)
+        {
+            StartCoroutine(AnimateFloatingText(floatingMoneyText, amount.ToString(), floatingMoneyText.transform.position, Color.red));
+            return;
+        }
         StartCoroutine(AnimateFloatingText(floatingAffectionText, "+" + amount.ToString(), floatingMoneyText.transform.position, Color.green));
     }
 

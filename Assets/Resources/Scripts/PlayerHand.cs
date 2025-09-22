@@ -36,7 +36,8 @@ public class PlayerHand : MonoBehaviour
             {
                 if(currentCustomer != null)
                 {
-                     float money = currentCustomer.CalculatePayment(heldSkewer);
+                    if (GameManager.Instance.isLeaving) return; // 손님이 나가는 중이면 아무것도 안 함
+                    float money = currentCustomer.CalculatePayment(heldSkewer);
                     Debug.Log($"손님에게서 {money}원을 받았습니다. 현재 잔액: {GameManager.Instance.money}원");
                     GameManager.Instance.AddMoney((int)money);
                     GameManager.Instance.CompleteOrder();

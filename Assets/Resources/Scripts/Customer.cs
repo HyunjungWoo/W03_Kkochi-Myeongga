@@ -13,10 +13,34 @@ public class Customer : MonoBehaviour
     private SpriteRenderer portraitSR;
 
     private Skewer skewerInRange;
-
+    public Button leaveButton; // 나갈 버튼 UI
     void Start()
     {
         SetupCustomer();
+
+        // 버튼이 있다면 초기 상태를 비활성화로 설정
+        if (leaveButton != null)
+        {
+            leaveButton.gameObject.SetActive(false);
+        }
+    }
+
+    // 나가기 버튼을 표시하는 함수
+    public void ShowLeaveButton()
+    {
+        if (leaveButton != null)
+        {
+            leaveButton.gameObject.SetActive(true);
+        }
+    }
+
+    // 나가기 버튼을 숨기는 함수
+    public void HideLeaveButton()
+    {
+        if (leaveButton != null)
+        {
+            leaveButton.gameObject.SetActive(false);
+        }
     }
 
     public void SetupCustomer()
@@ -55,7 +79,7 @@ public class Customer : MonoBehaviour
             finalPrice = skewer.price * 0.3f;
             // 주문이 틀릴 때, 무작위 불평 출력
             DialogueManager.Instance.Speak(customerData.GetRandomComplaint());
-            GameManager.Instance.AddAffection(-3); // 호감도 감소
+            GameManager.Instance.AddAffection(-5); // 호감도 감소
             skewer.ResetSkewer();
         }
 
