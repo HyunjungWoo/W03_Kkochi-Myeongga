@@ -6,7 +6,7 @@ public class SeasoningBottle : MonoBehaviour
     public GameObject saucePrefab;
 
     // 이 양념이 무엇인지 구분하기 위한 타입 (옵션이지만 추천)
-    public enum SeasoningType { Spicy, SoySauce, Salt }
+    public enum SeasoningType { Spicy, SoySauce, Salt,None }
     public SeasoningType type;
 
     // 게임 매니저나 다른 스크립트를 통해 현재 활성화된 꼬치를 받아와야 함
@@ -19,7 +19,7 @@ public class SeasoningBottle : MonoBehaviour
         if (currentSkewer != null && !currentSkewer.IsEmpty())
         {
             Debug.Log(type + " 양념을 바릅니다!");
-            currentSkewer.ApplySeasoning(saucePrefab);
+            currentSkewer.ApplySeasoning(saucePrefab, type);
         }
         else
         {

@@ -34,13 +34,18 @@ public class PlayerHand : MonoBehaviour
             // 만약 잡고 있는 꼬치가 있다면
             if (heldSkewer != null)
             {
-                if (currentCustomer != null)
+                if(currentCustomer != null)
                 {
-                    currentCustomer.TrySellSkewer();
+                     float money = currentCustomer.CalculatePayment(heldSkewer);
+                    GameManager.Instance.money += (int)money;
+                    Debug.Log($"손님에게서 {money}원을 받았습니다. 현재 잔액: {GameManager.Instance.money}원");
+                    GameManager.Instance.CompleteOrder();
 
                 }
+
                 heldSkewer.Release(); // 꼬치에게 놓였다고 알려줌
                 heldSkewer = null;    // 손은 이제 아무것도 안 잡고 있음
+
             }
         }
     }
